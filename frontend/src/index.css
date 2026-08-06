@@ -153,9 +153,8 @@ button {
   width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
-  opacity: 0.3;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 85%);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 95%);
 }
 
 .hero-footer {
@@ -223,9 +222,8 @@ button {
   object-fit: contain;
   z-index: 2;
   filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
-  opacity: 0.5;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 85%);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 95%);
 }
 
 .section-title {
@@ -328,9 +326,8 @@ button {
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
-  opacity: 0.5;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 85%);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 95%);
 }
 
 /* Footer */
