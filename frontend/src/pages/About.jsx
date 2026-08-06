@@ -49,7 +49,9 @@ const About = () => {
           >
             <img 
               src="/lookbook.png" 
-              alt="About Us" 
+              alt="About Us"
+              loading="lazy"
+              decoding="async"
               style={{ width: '100%', borderRadius: '10px', filter: 'grayscale(30%)' }} 
             />
           </motion.div>

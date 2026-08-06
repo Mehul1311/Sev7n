@@ -78,16 +78,6 @@ const Layout = () => {
           </motion.div>
         </div>
         
-        {/* Hamburger Icon for Mobile */}
-        <motion.button 
-          className="mobile-only menu-btn"
-          onClick={() => setIsMobileMenuOpen(true)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <Menu size={28} />
-        </motion.button>
-
         <div className="nav-brand-container">
           <Link 
             to="/" 
@@ -95,13 +85,25 @@ const Layout = () => {
             style={{ display: 'block', transition: 'all 0.3s ease' }}
             onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.8)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}
+            aria-label="Home"
           >
             SEV7N
           </Link>
         </div>
+        
         <div className="nav-icons">
-          <motion.button whileHover={{ scale: 1.1, rotate: 5 }}><ShoppingCart size={20} /></motion.button>
-          <motion.button whileHover={{ scale: 1.1, rotate: -5 }} className="desktop-only"><User size={20} /></motion.button>
+          <motion.button aria-label="Shopping Cart" whileHover={{ scale: 1.1, rotate: 5 }}><ShoppingCart size={20} /></motion.button>
+          <motion.button aria-label="User Account" whileHover={{ scale: 1.1, rotate: -5 }} className="desktop-only"><User size={20} /></motion.button>
+          {/* Hamburger Icon for Mobile */}
+          <motion.button 
+            aria-label="Open Mobile Menu"
+            className="mobile-only menu-btn"
+            onClick={() => setIsMobileMenuOpen(true)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Menu size={28} />
+          </motion.button>
         </div>
       </motion.nav>
 
@@ -118,6 +120,7 @@ const Layout = () => {
             <button 
               className="close-menu-btn"
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close Mobile Menu"
             >
               <X size={36} />
             </button>

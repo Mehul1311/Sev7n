@@ -59,6 +59,8 @@ const Catalog = () => {
                 <motion.img 
                   src={item.image} 
                   alt={item.name}
+                  loading="lazy"
+                  decoding="async"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                   style={{ height: '90%', objectFit: 'contain' }}

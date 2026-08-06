@@ -89,7 +89,9 @@ const Home = () => {
         <div className="split-image" style={{ overflow: 'hidden' }}>
           <motion.img 
             src="/tshirts.png" 
-            alt="T-Shirts and Shirts" 
+            alt="T-Shirts and Shirts"
+            loading="lazy"
+            decoding="async"
             style={{ y: yImage1 }}
             initial="hidden"
             whileInView="visible"
@@ -128,7 +130,9 @@ const Home = () => {
         <div className="split-image" style={{ overflow: 'hidden' }}>
           <motion.img 
             src="/jeans.png" 
-            alt="Jeans and Pants" 
+            alt="Jeans and Pants"
+            loading="lazy"
+            decoding="async"
             style={{ y: yImage2 }}
             initial="hidden"
             whileInView="visible"
@@ -167,7 +171,9 @@ const Home = () => {
         <div className="split-image" style={{ overflow: 'hidden' }}>
           <motion.img 
             src="/outerwear.png" 
-            alt="Outerwear" 
+            alt="Outerwear"
+            loading="lazy"
+            decoding="async"
             style={{ y: yImage3 }}
             initial="hidden"
             whileInView="visible"
@@ -230,7 +236,7 @@ const Home = () => {
           variants={imageReveal}
           whileHover={{ scale: 1.03 }}
         >
-          <img src="/lookbook.png" alt="Lookbook models" style={{ opacity: 0.5 }} />
+          <img src="/lookbook.png" alt="Lookbook models" loading="lazy" decoding="async" style={{ opacity: 0.5 }} />
         </motion.div>
       </section>
     </motion.div>

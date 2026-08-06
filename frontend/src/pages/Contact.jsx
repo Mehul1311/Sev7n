@@ -70,18 +70,18 @@ const Contact = () => {
           style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}
         >
           <motion.div variants={itemVariant} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Name</label>
-            <input type="text" style={inputStyle} placeholder="YOUR NAME" />
+            <label htmlFor="name" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Name</label>
+            <input id="name" type="text" style={inputStyle} placeholder="YOUR NAME" />
           </motion.div>
 
           <motion.div variants={itemVariant} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</label>
-            <input type="email" style={inputStyle} placeholder="YOUR EMAIL" />
+            <label htmlFor="email" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</label>
+            <input id="email" type="email" style={inputStyle} placeholder="YOUR EMAIL" />
           </motion.div>
 
           <motion.div variants={itemVariant} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Message</label>
-            <textarea rows="5" style={inputStyle} placeholder="HOW CAN WE HELP YOU?"></textarea>
+            <label htmlFor="message" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Message</label>
+            <textarea id="message" rows="5" style={inputStyle} placeholder="HOW CAN WE HELP YOU?"></textarea>
           </motion.div>
 
           <motion.button 
