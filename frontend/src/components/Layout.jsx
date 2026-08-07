@@ -42,68 +42,48 @@ const Layout = () => {
     })
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      {/* Scroll Progress Indicator */}
-      <motion.div 
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '3px',
-          background: 'linear-gradient(90deg, #fff, #555)',
-          transformOrigin: '0%',
-          scaleX,
-          zIndex: 1000
-        }}
-      />
-
       {/* Main Navbar */}
       <motion.nav 
-        className="navbar"
+        className={`navbar ${isScrolled ? 'scrolled' : ''}`}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
         <div className="nav-links desktop-only">
-          <motion.div whileHover={{ opacity: 1, y: -2 }} transition={{ duration: 0.2 }}>
-            <Link to="/about">About Us</Link>
-          </motion.div>
-          <motion.div whileHover={{ opacity: 1, y: -2 }} transition={{ duration: 0.2 }}>
-            <Link to="/catalog">Catalog</Link>
-          </motion.div>
-          <motion.div whileHover={{ opacity: 1, y: -2 }} transition={{ duration: 0.2 }}>
-            <Link to="/showrooms">Showrooms</Link>
-          </motion.div>
+          <Link to="/about">About Us</Link>
+          <Link to="/catalog">Catalog</Link>
+          <Link to="/showrooms">Showrooms</Link>
         </div>
         
         <div className="nav-brand-container">
-          <Link 
-            to="/" 
-            className="nav-brand"
-            style={{ display: 'block', transition: 'all 0.3s ease' }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.8)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}
-            aria-label="Home"
-          >
+          <Link to="/" className="nav-brand" aria-label="Home">
             SEV7N
           </Link>
         </div>
         
         <div className="nav-icons">
-          <motion.button aria-label="Shopping Cart" whileHover={{ scale: 1.1, rotate: 5 }}><ShoppingCart size={20} /></motion.button>
-          <motion.button aria-label="User Account" whileHover={{ scale: 1.1, rotate: -5 }} className="desktop-only"><User size={20} /></motion.button>
+          <button aria-label="Shopping Cart"><ShoppingCart size={22} /></button>
+          <button aria-label="User Account" className="desktop-only"><User size={22} /></button>
           {/* Hamburger Icon for Mobile */}
-          <motion.button 
+          <button 
             aria-label="Open Mobile Menu"
             className="mobile-only menu-btn"
             onClick={() => setIsMobileMenuOpen(true)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
           >
             <Menu size={28} />
-          </motion.button>
+          </button>
         </div>
       </motion.nav>
 
@@ -130,8 +110,6 @@ const Layout = () => {
                   key={item} 
                   custom={i} 
                   variants={linkVariants}
-                  whileHover={{ scale: 1.1, x: 20 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}>
                     {item}
@@ -147,10 +125,10 @@ const Layout = () => {
               transition={{ delay: 0.8 }}
             >
               <p>SEV7N WORLDWIDE</p>
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                <span>IG</span>
-                <span>TW</span>
-                <span>TK</span>
+              <div style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
+                <a href="#">IG</a>
+                <a href="#">TW</a>
+                <a href="#">TK</a>
               </div>
             </motion.div>
           </motion.div>
@@ -161,35 +139,45 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-      >
-        <div className="footer-top">
-          <div className="footer-links">
-            <motion.div whileHover={{ opacity: 1, scale: 1.1 }}><Link to="/about">About Us</Link></motion.div>
-            <motion.div whileHover={{ opacity: 1, scale: 1.1 }}><Link to="/catalog">Catalog</Link></motion.div>
-            <motion.div whileHover={{ opacity: 1, scale: 1.1 }}><Link to="/showrooms">Showrooms</Link></motion.div>
+      <footer className="footer-luxury">
+        <div className="container">
+          <div className="footer-grid">
+            <div className="footer-brand-section">
+              <h2 className="display-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)'}}>SEV7N</h2>
+              <p className="text-editorial" style={{ color: 'var(--color-text-muted)', marginTop: '1rem' }}>
+                Redefining modern luxury streetwear.<br/>Built for the fearless.
+              </p>
+            </div>
+            <div className="footer-links-section">
+              <div className="footer-col">
+                <h4>Explore</h4>
+                <Link to="/catalog">Shop Collection</Link>
+                <Link to="/about">Brand Story</Link>
+                <Link to="/showrooms">Showrooms</Link>
+              </div>
+              <div className="footer-col">
+                <h4>Support</h4>
+                <Link to="/contact">Contact Us</Link>
+                <a href="#">Shipping</a>
+                <a href="#">Returns</a>
+              </div>
+              <div className="footer-col">
+                <h4>Connect</h4>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">TikTok</a>
+              </div>
+            </div>
           </div>
-          <motion.div 
-            className="footer-brand"
-            whileHover={{ rotate: 180, scale: 1.1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link to="/">SEV7N</Link>
-          </motion.div>
-          <div className="footer-links">
-            <motion.div whileHover={{ opacity: 1, scale: 1.1 }}><Link to="/contact">Contact</Link></motion.div>
-            <motion.div whileHover={{ opacity: 1, scale: 1.1 }}><a href="#">Shipping</a></motion.div>
-            <motion.div whileHover={{ opacity: 1, scale: 1.1 }}><a href="#">Terms</a></motion.div>
+          <div className="footer-bottom">
+            <p>&copy; {new Date().getFullYear()} SEV7N WEAR. ALL RIGHTS RESERVED.</p>
+            <div className="footer-legal">
+              <a href="#">PRIVACY POLICY</a>
+              <a href="#">TERMS OF SERVICE</a>
+            </div>
           </div>
         </div>
-        <div className="footer-bottom">
-          &copy; 2025 Sev7n Wear. All rights reserved.
-        </div>
-      </motion.footer>
+      </footer>
     </>
   );
 };

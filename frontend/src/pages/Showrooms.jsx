@@ -1,104 +1,92 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Showrooms = () => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
-  };
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+};
 
+const Showrooms = () => {
   return (
     <motion.div
-      className="page-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      style={{ minHeight: '100vh', paddingTop: '150px', paddingBottom: '100px' }}
+      style={{ paddingTop: '120px', minHeight: '100vh', backgroundColor: 'var(--color-bg)' }}
     >
-      <div className="container">
+      <div className="container section-padding-sm">
         <motion.h1 
           className="display-text"
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          style={{ fontSize: 'clamp(3rem, 6vw, 7rem)', textAlign: 'center', marginBottom: '4rem' }}
+          initial="hidden" animate="visible" variants={fadeUp}
+          style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', textAlign: 'center', marginBottom: '4rem' }}
         >
-          OUR SHOWROOMS
+          FLAGSHIP STORES
         </motion.h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
+        {/* Large Gallery */}
+        <motion.div 
+          initial="hidden" animate="visible" variants={fadeUp}
+          style={{ width: '100%', height: '60vh', marginBottom: '6rem', position: 'relative' }}
+        >
+          <img src="/lookbook.png" alt="Showroom Interior" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', background: 'rgba(5,5,5,0.8)', backdropFilter: 'blur(10px)', padding: '1rem 2rem', border: '1px solid var(--color-accent)' }}>
+            <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--color-silver)' }}>Interior</span>
+            <div style={{ fontSize: '1.2rem', fontWeight: 500, color: '#fff' }}>New York City</div>
+          </div>
+        </motion.div>
+
+        {/* Location Cards */}
+        <div className="grid-3-col" style={{ marginBottom: '6rem' }}>
           
-          {/* New York Showroom */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ backgroundColor: '#0a0a0a', border: '1px solid #222', padding: '3rem', position: 'relative', overflow: 'hidden' }}
-          >
-            <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '8rem', color: '#111', fontFamily: 'var(--font-display)', zIndex: 0, pointerEvents: 'none' }}>
-              NYC
-            </div>
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', letterSpacing: '2px' }}>NEW YORK</h2>
-              <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
+          {/* NYC */}
+          <motion.div className="card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', letterSpacing: '2px', fontFamily: 'var(--font-display)' }}>NEW YORK</h2>
+              <p className="text-editorial" style={{ color: 'var(--color-text-muted)', marginBottom: '2rem' }}>
                 125 Mercer Street<br />
                 SoHo, NY 10012<br />
                 United States<br /><br />
-                Phone: +1 (212) 555-0198
+                +1 (212) 555-0198
               </p>
-              <div style={{ fontSize: '0.9rem', color: '#888', marginBottom: '0.5rem' }}>HOURS</div>
-              <p style={{ fontWeight: '600' }}>Mon - Sat: 11AM - 7PM<br />Sun: 12PM - 6PM</p>
+              <div style={{ fontSize: '0.85rem', color: '#888', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>HOURS</div>
+              <p style={{ fontWeight: '400', fontSize: '1rem' }}>Mon - Sat: 11AM - 7PM<br />Sun: 12PM - 6PM</p>
             </div>
           </motion.div>
 
-          {/* London Showroom */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{ backgroundColor: '#0a0a0a', border: '1px solid #222', padding: '3rem', position: 'relative', overflow: 'hidden' }}
-          >
-            <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '8rem', color: '#111', fontFamily: 'var(--font-display)', zIndex: 0, pointerEvents: 'none' }}>
-              LDN
-            </div>
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', letterSpacing: '2px' }}>LONDON</h2>
-              <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
+          {/* LDN */}
+          <motion.div className="card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', letterSpacing: '2px', fontFamily: 'var(--font-display)' }}>LONDON</h2>
+              <p className="text-editorial" style={{ color: 'var(--color-text-muted)', marginBottom: '2rem' }}>
                 45 Redchurch Street<br />
                 Shoreditch, London E2 7DJ<br />
                 United Kingdom<br /><br />
-                Phone: +44 20 7946 0958
+                +44 20 7946 0958
               </p>
-              <div style={{ fontSize: '0.9rem', color: '#888', marginBottom: '0.5rem' }}>HOURS</div>
-              <p style={{ fontWeight: '600' }}>Mon - Sat: 10AM - 7PM<br />Sun: 11AM - 5PM</p>
+              <div style={{ fontSize: '0.85rem', color: '#888', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>HOURS</div>
+              <p style={{ fontWeight: '400', fontSize: '1rem' }}>Mon - Sat: 10AM - 7PM<br />Sun: 11AM - 5PM</p>
+            </div>
+          </motion.div>
+          
+          {/* JPR */}
+          <motion.div className="card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', letterSpacing: '2px', fontFamily: 'var(--font-display)' }}>JAIPUR</h2>
+              <p className="text-editorial" style={{ color: 'var(--color-text-muted)', marginBottom: '2rem' }}>
+                Mansarovar<br />
+                Jaipur 302020<br />
+                India<br /><br />
+                +91 98765 43210
+              </p>
+              <div style={{ fontSize: '0.85rem', color: '#888', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>HOURS</div>
+              <p style={{ fontWeight: '400', fontSize: '1rem' }}>Mon - Sat: 10AM - 8PM<br />Sun: Closed</p>
             </div>
           </motion.div>
 
         </div>
-        
-        {/* Jaipur Showroom */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          style={{ backgroundColor: '#0a0a0a', border: '1px solid #222', padding: '3rem', position: 'relative', overflow: 'hidden', marginTop: '3rem' }}
-        >
-          <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '8rem', color: '#111', fontFamily: 'var(--font-display)', zIndex: 0, pointerEvents: 'none' }}>
-            JPR
-          </div>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '1rem', letterSpacing: '2px' }}>JAIPUR</h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
-              Mansarovar<br />
-              Jaipur 302020<br />
-              India<br /><br />
-              Phone: +91 98765 43210
-            </p>
-            <div style={{ fontSize: '0.9rem', color: '#888', marginBottom: '0.5rem' }}>HOURS</div>
-            <p style={{ fontWeight: '600' }}>Mon - Sat: 10AM - 8PM<br />Sun: Closed</p>
-          </div>
-        </motion.div>
+
+
 
       </div>
     </motion.div>
