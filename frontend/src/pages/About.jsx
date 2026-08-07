@@ -30,6 +30,7 @@ const About = () => {
           style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }}
         />
         
+        {/* Model Layer (Front, centered, masked) */}
         <div className="container" style={{ position: 'absolute', bottom: '10%', left: '0', right: '0', zIndex: 10 }}>
           <motion.h1 
             className="display-text"

@@ -14,7 +14,7 @@ const staggerContainer = {
 };
 
 const ProductCard = ({ img, name, price, yTransform }) => (
-  <motion.div className="product-card" variants={fadeUp} style={{ y: yTransform }}>
+  <motion.div className="product-card" variants={fadeUp} style={{ y: yTransform, willChange: 'transform' }}>
     <div className="product-card-image">
       <motion.img 
         src={img} 
@@ -97,7 +97,7 @@ const Home = () => {
           <motion.img 
             src="/crazy-hero.png" 
             alt="SEV7N Hero" 
-            style={{ scale: heroScale, y: heroY }}
+            style={{ scale: heroScale, y: heroY, willChange: 'transform' }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -212,6 +212,7 @@ const Home = () => {
           className="marquee-content"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+          style={{ willChange: 'transform' }}
         >
           <div className="marquee-text">
             <span>NEW COLLECTION OUT NOW</span><span>•</span>

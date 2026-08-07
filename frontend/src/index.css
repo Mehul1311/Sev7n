@@ -260,6 +260,11 @@ button {
   background: radial-gradient(circle at 35% 25%, #ffffff 0%, #b3b3b3 15%, #333333 45%, #050505 90%);
   box-shadow: inset -15px -15px 30px rgba(0,0,0,0.9), 0 30px 60px rgba(0,0,0,0.6);
   z-index: 2;
+  will-change: transform;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .sphere-1 {
@@ -656,6 +661,9 @@ button {
   display: flex;
   gap: 3rem;
   padding-right: 3rem;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .marquee-text {
