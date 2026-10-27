@@ -23,11 +23,12 @@ A high-fashion, ultra-premium streetwear e-commerce website built for **Sev7n**.
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: [React 18](https://reactjs.org/) powered by [Vite](https://vitejs.dev/) for lightning-fast HMR and building.
-- **Routing**: [React Router v6](https://reactrouter.com/)
+- **Frontend**: [React 19](https://react.dev/) and [Vite 8](https://vitejs.dev/)
+- **Routing**: [React Router 7](https://reactrouter.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Styling**: Pure Vanilla CSS featuring modern flexbox/grid layouts, CSS variables, and fluid typography.
+- **Icons**: [Lucide](https://lucide.dev/)
+- **Styling**: CSS with flexbox, grid, custom properties, and fluid type
+- **API**: Express 5. `GET /api/health` returns a status check.
 
 ## 🚀 Getting Started
 
@@ -57,6 +58,15 @@ To run this project locally, follow these steps:
 
 4. **View the site:**
    Open your browser and navigate to `http://localhost:5173` (or the port provided in your terminal).
+
+The API is optional for the current storefront. From `backend/`:
+
+```bash
+npm install
+node server.js
+```
+
+It listens on port `5000` unless `PORT` is set.
 
 ## 📁 Project Structure
 
